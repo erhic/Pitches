@@ -45,6 +45,16 @@
         $ pip install Flask
         $ pip install Flask-Bootstrap
         $ pip install Flask-Script
+        $ pip install Flask-Login
+        $ pip install Flask-Mail
+        $ pip install Flask-Migrate
+        $ pip install Flask-SQLAlchemy
+        $ pip install Flask-Uploads
+        $ pip install Flask-WTF
+        $ pip install Werkzeug
+        $ pip install psycopg2
+       
+        
 
 
 
