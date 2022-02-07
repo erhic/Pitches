@@ -1,10 +1,7 @@
 # importing  the flask module that are used while creating a form
-
-from enum import unique
-from re import L
 from flask_wtf import FlaskForm #the form from flask
 from wtforms import StringField,BooleanField,PasswordField,SubmitField,ValidationError#the field class that we are going to use/import from the flask package wtform module module
-from wtforms.validators import DataRequired,Email,EqualTo,Length,Regexp
+from wtforms.validators import DataRequired,Email,EqualTo,Length,Regexp,Optional
 from models import User
 
 class RegisterForm():
@@ -18,27 +15,25 @@ class RegisterForm():
     email=StringField(' Email',validators=[DataRequired(),Email(),Length(min=5,max=30)])
     password=PasswordField('Password',validators=[DataRequired(),EqualTo('confirmpassword',message='Password required to match'),Length(min=5,max=64)])
     confirmpassword=PasswordField('Confirm Password',validators=[DataRequired()])
-    submit=SubmitField('Submit')
+    submit=SubmitField('Sign Up')
     
 # a function to check if a email exist to prompt user to enter another one
  
-    def check_if_email_exist():
+    def check_if_email_exist(self,email):
         if User.query.filter_by(email=email.data).first():
             raise ValidationError("Email already registered!")
 
 # a function to check if a username exist to prompt user to enter another one
-    def check_if_usrname_exist():
+    def check_if_usrname_exist(self,username):
         if User.query.filter_by(username=username.data).first():
             raise ValidationError('Username already exists')
-
-         
-    
-    
-    
-    
-    
-    
+      
+# A form that is to filled to be authentificated or be allowed to access other webpage after/upon/to registering 
 class LoginForm():
     '''
     class to create forms for login and its input   
     '''
+    email=StringField('Email',validators=[DataRequired(),Email()])
+    password=PasswordField('Enter your Password',validators=[DataRequired()])
+    remember_me=BooleanField('Remember Me',validators=[Optional()])
+    submit=SubmitField('Login')
