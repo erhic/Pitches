@@ -8,7 +8,11 @@ class RegisterForm():
     '''
     class to create forms for registration and its input   
     '''
-    
+    username= StringField
+    email=StringField
+    password=PasswordField
+    confirmpassword=PasswordField
+    submit=BooleanField
     
     
     
