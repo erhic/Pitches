@@ -2,7 +2,7 @@
 
 from flask_wtf import FlaskForm #the form from flask
 from wtforms import StringField,BooleanField,PasswordField,SubmitField #the field class that we are going to use/import from the flask package wtform module module
-
+from wtforms.validators import DataRequired,Email,EqualTo
 
 class RegisterForm():
     '''
