@@ -7,16 +7,31 @@
         <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{url_for('about')}}">About</a>
 
 
             </div>
             <div class="navbar-nav ms-auto">
                 {% if current_user.is_authenticated %}
-                <a class="nav-item nav-link" href="{{url_for('create_post')}}">Pitches</a>
-                <a class="nav-item nav-link" href="{{url_for('update')}}">Profile</a>
-                <a class="nav-item nav-link" href="{{ url_for('logout')}}">Log Out</a> {% else %}
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Pitches
+                        </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{url_for('pitch')}}">Create Pitches</a></li>
+                                <li><a class="dropdown-item" href="{{url_for('index')}}">View Pitches</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <a class="nav-item nav-link" href="{{url_for('profile')}}">Profile</a>
+                <a class="nav-item nav-link" href="{{url_for('logout')}}">Log Out</a> {% else %}
                 <a class="nav-item nav-link" href="{{url_for('register')}}">Sign Up</a>
                 <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a> {% endif %}
+
 
             </div>
 

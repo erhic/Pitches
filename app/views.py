@@ -16,7 +16,12 @@ PitchForm=forms.PitchForm
 def index():
     db.create_all()
     pitches=Pitches.query.all()
-    return  render_template('index.html',pitch=pitches)
+    return  render_template('homepage.html',pitches=pitches)
+
+@app.route('/about')
+def about():
+    
+    return  render_template('index.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -60,12 +65,17 @@ def pitch():
     form =PitchForm()
     if form.validate_on_submit():
         pitch=Pitches(title=form.title.data,
-                      content=form.content.data,
-                      user=current_user,
-                      date=form.datetime.data)
+                      pitch=form.pitch.data,
+                      user=current_user
+                      )
         db.session.add(pitch)
         db.session.commit()
         
         flash('Pitch successfully created','sucess')
-        return redirect (url_for('home'))
+        return redirect (url_for('index'))
     return render_template ('pitch.html',form=form)
+
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')

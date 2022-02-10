@@ -3,8 +3,7 @@ os.urandom(24)
 
 class Config:
     SECRET_KEY = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
-    # SECRET_KEY=os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitchblog'
 
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -15,7 +14,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    SUBJECT_PREFIX = 'Pitch It Up!'
+    SUBJECT_PREFIX = 'Pitch'
     SENDER_EMAIL = 'erihngug@gmail.com'
 
     @staticmethod
@@ -29,10 +28,10 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches'
 
-class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches_test'
+# class TestConfig(Config):
+#     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches_test'
 
 
 class DevConfig(Config):
@@ -41,12 +40,12 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches'
+    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches'
 
     DEBUG = True
 
-config_options = {
-'development':DevConfig,
-'production':ProdConfig,
-'test':TestConfig
-}
+# config_options = {
+# 'development':DevConfig,
+# 'production':ProdConfig,
+# 'test':TestConfig
+# }
