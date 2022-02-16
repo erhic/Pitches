@@ -20,11 +20,19 @@ Migrate(app,db)
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI']
+# app.config['SQLALCHEMY_DATABASE_URI']
 
+
+app.config.from_object(ProdConfig)
+
+##########
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://moringa:1234@localhost/pitchblog'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+
+#####
 
 # Creating the app configurations
-app.config.from_object(ProdConfig)
+
 # configure UploadSet
 configure_uploads(app,photos)
 
