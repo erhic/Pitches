@@ -1,14 +1,13 @@
-{% extends 'base.html' %} {% block content %} {{%for pitch in pitches %}
+{% extends 'base.html' %} {% block content %}
+<div class="row mt-3">{%for pitch in pitches %}
+    <div class="col-md-4 mx-auto">
+        <div class="card shadow p-2 mt-2">
+            <h5 class="card-title bg-light py-2 text-center ">{{pitch.title}}</h5>
+            <div class="card-body">
 
-<div class="col-md-4 mx-auto">
-    <div class="card shadow p-2">
-        <h5 class="card-title bg-light py-2 text-center ">{{pitch.title}}</h5>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text text-center py-2"><i>"{{pitch.pitch}}"</i></p>
-            <p class="card-text text-end  py-2"><small>Date Posted:{{pitch.datetime.strftime('%d-%m-%Y') }}</small></p>
-            <a href="#" class="btn btn-primary">Comment</a>
+                <p class="card-text text-center py-2"><i>"{{pitch.pitch}}"</i></p>
+                <a href="#" class="btn btn-primary">Comment</a>
+            </div>
         </div>
     </div>
-</div>
-{%endfor%}{% endblock%}
+    {%endfor%} </div>{% endblock%}
