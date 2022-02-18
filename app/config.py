@@ -1,5 +1,3 @@
-
-
 import os
 os.urandom(24)
 
@@ -15,9 +13,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    # SUBJECT_PREFIX = 'Post'
-    # SENDER_EMAIL = 'hing@gmail.com'
-    print(MAIL_USERNAME)
+    
 
     @staticmethod
     def init_app(app):
@@ -32,10 +28,7 @@ class ProdConfig(Config):
     # '''
    
     SQLALCHEMY_DATABASE_URI =os.environ.get('SQLALCHEMY_DATABASE_URI')
-    
-    
-    
-  
+    print(SQLALCHEMY_DATABASE_URI)
 # class TestConfig(Config):
 #     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog_test'
 
